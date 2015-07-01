@@ -6,7 +6,8 @@
 $:.unshift File.dirname(__FILE__)
 
 require 'myfunc.rb'
-require 'display.rb'
+require 'player.rb'
+require 'board.rb'
 
 class Game
   def run
