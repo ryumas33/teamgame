@@ -17,7 +17,7 @@ class Player
   
   
   def actionCard
-    put "action? (1:Hit 0:Stand)"
+    puts "action? (1:Hit 0:Stand)"
     while 1 do
       myAct = STDIN.gets
       if myAct==1 then
@@ -25,8 +25,9 @@ class Player
       elsif myAct==0 then
         return 0
       else
-        put "please retype (1or0)"
+        puts "please retype (1or0)"
       end
     end
   end
+  
 end
