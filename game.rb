@@ -11,29 +11,29 @@ require 'player.rb'
 require 'board.rb'
 
 class Game
-  @sum = 0
+
 
   def run
     #二枚配る
     card = @board.hit
     @sum = @sum + card.number.to_i
-    puts card
+    puts card.number
     card = @board.hit
     @sum = @sum + card.number.to_i
-    puts card
+    puts card.number
 
     #勝負するか、カードを追加するか
     while(1)
       action = @player1.actionCard
-      if(action == 1)
+      if(action == 0)
         print "勝負します"
         print @sum
         break
-      elsif(action == 0)
+      elsif(action == 1)
         print "追加します"
         card = @board.hit
-        @sum = @sum + card.to_i
-        puts card
+        @sum = @sum + card.number.to_i
+        puts card.number
       end
     end
 
@@ -46,6 +46,7 @@ class Game
     @player1 = Player.new
     # @player2 = Player.new
     @board = Board.new
+    @sum = 0	
   end
 
   def somefunc
