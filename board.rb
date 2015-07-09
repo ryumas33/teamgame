@@ -7,6 +7,11 @@ class Card
   def initialize(suit, number)
     @suit = suit
     @number = number
+    if number.to_i >= 10 then
+      @bjnumber = 10
+    else
+      @bjnumber = number
+    end
   end
 end
 
@@ -68,7 +73,7 @@ class Board
 end
 
 ##for debug
-#b = Board.new
+b = Board.new
 #b.checkcards
 #puts b.p1chip
 #puts b.p2chip
