@@ -14,12 +14,13 @@ class Player
     myChip = 0
     myTotal = -1
   end
-
+  
+  
   def actionCard
     put "action? (1:Hit 0:Stand)"
-    while 1 then # 1:ヒット(追加) 0:スタンド(勝負)
+    while 1 do
       myAct = STDIN.gets
-      if myAct==1　then
+      if myAct==1 then
         return 1
       elsif myAct==0 then
         return 0
@@ -29,4 +30,3 @@ class Player
     end
   end
 end
-
