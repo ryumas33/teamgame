@@ -20,9 +20,9 @@ class Player
     puts "action? (1:Hit 0:Stand)"
     while 1 do
       myAct = STDIN.gets
-      if myAct==1 then
+      if myAct.to_i==1 then
         return 1
-      elsif myAct==0 then
+      elsif myAct.to_i==0 then
         return 0
       else
         puts "please retype (1or0)"
