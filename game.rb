@@ -26,14 +26,18 @@ class Game
     while(1)
       action = @player1.actionCard
       if(action == 0)
-        print "勝負します"
-        print @sum
+        puts "勝負します"
+        puts @sum
         break
       elsif(action == 1)
-        print "追加します"
+        puts "追加します"
         card = @board.hit
         @sum = @sum + card.number.to_i
         puts card.number
+      end
+      if(@sum >= 22)
+        puts "バストです"
+        break
       end
     end
 
