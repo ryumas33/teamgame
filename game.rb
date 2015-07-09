@@ -16,10 +16,10 @@ class Game
   def run
     #二枚配る
     card = @board.hit
-    @sum = @sum + card.number.to_i
+    @sum = @sum + card.bjnumber
     puts card.number
     card = @board.hit
-    @sum = @sum + card.number.to_i
+    @sum = @sum + card.bjnumber
     puts card.number
 
     #勝負するか、カードを追加するか
@@ -32,7 +32,7 @@ class Game
       elsif(action == 1)
         puts "追加します"
         card = @board.hit
-        @sum = @sum + card.number.to_i
+        @sum = @sum + card.bjnumber
         puts card.number
       end
       if(@sum >= 22)
