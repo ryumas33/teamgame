@@ -7,7 +7,7 @@ class Card
   def initialize(suit, number)
     @suit = suit
     @number = number
-    if number.to_i >= 10 then
+    if number >= 10 then
       @bjnumber = 10
     else
       @bjnumber = number
