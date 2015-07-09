@@ -15,11 +15,11 @@ class Game
 
   def run
     #二枚配る
-    card = @broad.hit
-    @sum += card.to_i
+    card = @board.hit
+    @sum = @sum + card.number.to_i
     puts card
-    card = @broad.hit
-    @sum += card.to_i
+    card = @board.hit
+    @sum = @sum + card.number.to_i
     puts card
 
     #勝負するか、カードを追加するか
@@ -31,8 +31,8 @@ class Game
         break
       elsif(action == 0)
         print "追加します"
-        card = @broad.hit
-        @sum += card.to_i
+        card = @board.hit
+        @sum = @sum + card.to_i
         puts card
       end
     end
