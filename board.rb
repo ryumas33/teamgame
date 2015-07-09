@@ -7,6 +7,11 @@ class Card
   def initialize(suit, number)
     @suit = suit
     @number = number
+    if number.to_i >= 10 then
+      @bjnumber = 10
+    else
+      @bjnumber = number
+    end
   end
 end
 
@@ -23,6 +28,7 @@ class Board
       end
     end
     @cards.shuffle!
+    @pot = 0
   end
 
   def p1chip
@@ -34,19 +40,31 @@ class Board
   end
 
   def p1bet(chip)
-    @@p1chip -= chip
+    if chip > @@p1chip then
+      puts "shortning."
+    else
+      @@p1chip -= chip
+      @pot += chip
+    end
   end
 
   def p2bet(chip)
-    @@p2chip -= chip
+    if chip > @@p2chip then
+      puts "shortning."
+    else
+      @@p2chip -= chip
+      @pot += chip
+    end
   end
 
-  def p1get(chip)
-    @@p1chip += chip
+  def p1win
+    @@p1chip += @pot
+    @pot = 0
   end
 
-  def p2get(chip)
-    @@p2chip += chip
+  def p2win
+    @@p2chip += @pot
+    @pot = 0
   end
 
   def hit
@@ -68,7 +86,7 @@ class Board
 end
 
 ##for debug
-#b = Board.new
+b = Board.new
 #b.checkcards
 #puts b.p1chip
 #puts b.p2chip
