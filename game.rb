@@ -26,8 +26,8 @@ class Game
     while(1)
       action = @player1.actionCard
       if(action == 0)
-        print "勝負します"
-        print @sum
+        print "勝負します\n"
+        print "合計は" , @sum , "です。\n"
         break
       elsif(action == 1)
         print "追加します"
