@@ -87,16 +87,15 @@ class Player
           else
             puts "player " + @myID + " : raise make " + myBet.chip
           end
-        end
-        return myBet.action
-      else
-        if boardRaise==0 then
-          puts "please retype (0,2or3)"
+          return myBet.action
         else
-          puts "please retype (0or2)"
+          if boardRaise==0 then
+            puts "please retype (0,2or3)"
+          else
+            puts "please retype (0or2)"
+          end
         end
       end
     end
   end
-  
 end
