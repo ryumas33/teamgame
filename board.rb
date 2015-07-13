@@ -13,6 +13,9 @@ class Card
       @bjnumber = number
     end
   end
+  def bjnumber
+    @bjnumber
+  end
 end
 
 class Board
