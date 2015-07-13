@@ -4,6 +4,9 @@
 #
 #
 
+
+####
+
 $:.unshift File.dirname(__FILE__)
 
 require 'myfunc.rb'
