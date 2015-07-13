@@ -2,6 +2,11 @@
 # player.rb
 #
 #
+
+### myBet.action => meBet_action
+### myBet.chip => meBet_chip
+### puts "" + @??? + ""=> print "" , @??? , ""
+
 class Player
   #プレイヤー番号、手札、持ち金と場の賭け金
   def initialize
@@ -22,11 +27,11 @@ class Player
 
   #持ち金と場の賭け金の確認
   def showStatus
-    puts "[ player "+@myID+" ]"
-    puts "chip : "+@myTotal
-    puts "[ player "+@opponentID+" ]"
-    puts "chip : "+@opponentTotal
-    puts "[ board chip : "+@boardTotal+" ]"
+    print "[ player ",@myID," ]" , "\n"
+    print "chip : ",@myTotal
+    print "[ player ",@opponentID," ]" , "\n"
+    print "chip : ",@opponentTotal
+    print "[ board chip : ",@boardTotal," ]" , "\n"
   end
 
   #カード追加
@@ -94,23 +99,23 @@ class Player
     if boardBet==0 then
       puts "action? (check[1] or bet[3])"
       while 1 do
-        myBet.action = STDIN.gets.to_i
+        myBet_action = STDIN.gets.to_i
         
         #チェック
-        if myBet.action==1 then
-          puts "player " + @myID + " : check"
-          return [myBet.action, 0]
+        if myBet_action==1 then
+          print "player " , @myID , " : check" , "\n"
+          return [myBet_action, 0]
 
         #ベット20
-        elsif myBet.action==3 then
+        elsif myBet_action==3 then
           #足りない場合、オールイン
           if myChip < 20 then
-            myBet.chip = myChip
-            puts "player " + @myID + " : bet All in " + myBet.chip
-            return [myBet.action, myBet.chip]
+            myBet_chip = myChip
+            print "player " , @myID , " : bet All in " , myBet_chip , "\n"
+            return [myBet_action, myBet_chip]
           else
-            puts "player " + @myID + " : bet 20"
-            return [myBet.action, 20]
+            print "player " , @myID , " : bet 20" , "\n"
+            return [myBet_action, 20]
           end
         else
           puts "please retype (1or3)"
@@ -127,58 +132,58 @@ class Player
       end
       
       while 1 do
-        myBet.action = STDIN.gets.to_i
+        myBet_action = STDIN.gets.to_i
 
         #降りる
-        if myBet.action==0 then
-          puts "player " + @myID + " : fold"
-          return [myBet.action, 0]
+        if myBet_action==0 then
+          print "player " , @myID , " : fold" , "\n"
+          return [myBet_action, 0]
 
         #コールする
-        elsif myBet.action==2 then
+        elsif myBet_action==2 then
           case boardBetCount
           when 1,2 then
-            myBet.chip = 20
+            myBet_chip = 20
           when 3 then
-            myBet.chip = 40
+            myBet_chip = 40
           when 4 then
-            myBet.chip = 80
+            myBet_chip = 80
           else
             puts "ERROR : call section in Player/actionBet "
             exit(1)
           end
           
           #足りない場合、オールイン
-          if myChip < myBet.chip then
-            myBet.chip = myChip 
-            puts "palyer " + @myID + " : call All in " + myBet.chip
+          if myChip < myBet_chip then
+            myBet_chip = myChip 
+            print "palyer " , @myID , " : call All in " , myBet_chip , "\n"
           else
-            puts "player " + @myID + " : call " + myBet.chip
+            print "player " , @myID , " : call " , myBet_chip , "\n"
           end
-          return [myBet.action,myBet.chip]
+          return [myBet_action,myBet_chip]
 
         #レイズする(制限設定してるけど適当)
-        elsif myBet.action==3 && boardBetCount<4 then
+        elsif myBet_action==3 && boardBetCount<4 then
 
           case boardBetCount
           when 1 then
-            myBet.chip = 20
+            myBet_chip = 20
           when 2 then
-            myBet.chip = 60
+            myBet_chip = 60
           when 3 then
-            myBet.chip = 120
+            myBet_chip = 120
           else
             puts "ERROR : raise section in Player/actionBet "
             exit(1)
           end
           #足りない場合、オールイン
-          if myChip < myBet.chip then
-            myBet.chip = myChip
-            puts "player " + @myID + " : raise All in " + myBet.chip
+          if myChip < myBet_chip then
+            myBet_chip = myChip
+            print "player " , @myID , " : raise All in " , myBet_chip , "\n"
           else
-            puts "player " + @myID + " : raise make " + myBet.chip
+            print "player " , @myID , " : raise make " , myBet_chip , "\n"
           end
-          return [myBet.action,myBet.chip]
+          return [myBet_action,myBet_chip]
           
         else
           if boardBetCount<4 then
