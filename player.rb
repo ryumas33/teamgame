@@ -136,24 +136,46 @@ class Player
 
         #コールする
         elsif myBet.action==2 then
+          case boardBetCount
+          when 1,2 then
+            myBet.chip = 20
+          when 3 then
+            myBet.chip = 40
+          when 4 then
+            myBet.chip = 80
+          else
+            puts "ERROR : call section in Player/actionBet "
+            exit(1)
+          end
+          
           #足りない場合、オールイン
-          if myChip < boardBet then
-            myBet.chip = myChip
+          if myChip < myBet.chip then
+            myBet.chip = myChip 
             puts "palyer " + @myID + " : call All in " + myBet.chip
           else
-            myBet.chip = boardBet
             puts "player " + @myID + " : call " + myBet.chip
           end
           return [myBet.action,myBet.chip]
 
         #レイズする(制限設定してるけど適当)
         elsif myBet.action==3 && boardBetCount<4 then
+
+          case boardBetCount
+          when 1 then
+            myBet.chip = 20
+          when 2 then
+            myBet.chip = 60
+          when 3 then
+            myBet.chip = 120
+          else
+            puts "ERROR : raise section in Player/actionBet "
+            exit(1)
+          end
           #足りない場合、オールイン
-          if myChip < boardBet * 2 then
+          if myChip < myBet.chip then
             myBet.chip = myChip
             puts "player " + @myID + " : raise All in " + myBet.chip
           else
-            myBet.chip = boardBet * 2
             puts "player " + @myID + " : raise make " + myBet.chip
           end
           return [myBet.action,myBet.chip]
